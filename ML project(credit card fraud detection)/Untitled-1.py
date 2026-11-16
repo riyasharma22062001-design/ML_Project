@@ -1,6 +1,5 @@
-# ============================================================
+
 # CREDIT CARD FRAUD DETECTION USING MACHINE LEARNING
-# ============================================================
 
 import numpy as np
 import pandas as pd
@@ -22,9 +21,7 @@ from sklearn.metrics import (
     roc_auc_score
 )
 
-# ------------------------------------------------------------
 # 1. CREATE DATASET
-# ------------------------------------------------------------
 
 print("=" * 60)
 print("CREDIT CARD FRAUD DETECTION")
@@ -88,9 +85,7 @@ print(data.head())
 print("\nDataset shape:")
 print(data.shape)
 
-# ------------------------------------------------------------
 # 2. CHECK DATA
-# ------------------------------------------------------------
 
 print("\nMissing values:")
 print(data.isnull().sum())
@@ -98,9 +93,7 @@ print(data.isnull().sum())
 print("\nFraud distribution:")
 print(data["Fraud"].value_counts())
 
-# ------------------------------------------------------------
 # 3. VISUALIZE FRAUD DISTRIBUTION
-# ------------------------------------------------------------
 
 plt.figure(figsize=(6, 4))
 
@@ -113,16 +106,12 @@ plt.xticks([0, 1], ["Genuine", "Fraud"])
 
 plt.show()
 
-# ------------------------------------------------------------
 # 4. SEPARATE FEATURES AND TARGET
-# ------------------------------------------------------------
 
 X = data.drop("Fraud", axis=1)
 y = data["Fraud"]
 
-# ------------------------------------------------------------
 # 5. TRAIN TEST SPLIT
-# ------------------------------------------------------------
 
 X_train, X_test, y_train, y_test = train_test_split(
     X,
@@ -135,18 +124,14 @@ X_train, X_test, y_train, y_test = train_test_split(
 print("\nTraining samples:", X_train.shape[0])
 print("Testing samples:", X_test.shape[0])
 
-# ------------------------------------------------------------
 # 6. FEATURE SCALING
-# ------------------------------------------------------------
 
 scaler = StandardScaler()
 
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# ------------------------------------------------------------
 # 7. LOGISTIC REGRESSION
-# ------------------------------------------------------------
 
 print("\n" + "=" * 60)
 print("LOGISTIC REGRESSION")
@@ -187,9 +172,7 @@ print(classification_report(
     zero_division=0
 ))
 
-# ------------------------------------------------------------
 # 8. LOGISTIC REGRESSION CONFUSION MATRIX
-# ------------------------------------------------------------
 
 cm_logistic = confusion_matrix(y_test, logistic_prediction)
 
